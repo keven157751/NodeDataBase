@@ -1,9 +1,19 @@
-import { createServer } from 'node:http'
+import { createServer, request } from 'node:http'
 
 
-const server = createServer(( ) => {
-    console.log('Hello World')
+const server = createServer((request, response ) => {
+    response.write('oi');
 })
 
+server.on('request', (request, res) => {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      data: 'initial value',
+    }));
+  });
 
-server.listen(8080)
+const teste = request(() => {
+  
+})
+
+server.listen(8000)
